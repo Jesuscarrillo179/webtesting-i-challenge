@@ -45,9 +45,9 @@ describe('enhancer', () => {
         })
     })
     describe('get()', () => {
-        it('should enhance by 1', ()  => {
-            expect(get(item)).toBe(`[+${item.enhancement}] ${item.name}`)
-            expect(get(item4)).toBe(`${item4.name}`)
+        it('get name by enchancement level', ()  => {
+            expect(get(item)).toBe(`[+7] shortsword`)
+            expect(get(item4)).toBe(`stick`)
         })
     })
 })
