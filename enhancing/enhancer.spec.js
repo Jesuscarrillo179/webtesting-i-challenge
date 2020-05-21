@@ -1,9 +1,9 @@
-const { succeed, fail, repair, get } = require('./enhancer.js');
+const { succeed, fail, repair, get , returnZeroIfNegative} = require('./enhancer.js');
 
 const item = {
     name: "shortsword",
     durability: 2,
-    enhancement: 7,
+    enhancement: 2,
 }
 
 const item2 = {
@@ -20,7 +20,7 @@ const item3 = {
 
 const item4 = {
     name: "stick",
-    durability: 10,
+    durability: 50,
     enhancement: 0,
 }
 
@@ -37,16 +37,14 @@ describe('enhancer', () => {
         })
     })
     describe('fail()', () => {
-        it('should lower enhancer level', ()  => {
-            expect(fail(item)).toBe(item.enhancement - 5)
-            expect(fail(item2)).toBe(item2.enhancement - 1)
-            expect(fail(item3)).toBe(item3.enhancement - 10)
-            expect(fail(item4)).toBe(0)
+        it('should lower durability level', ()  => {
+            expect(fail(item3)).toBe(0)
+            expect(fail(item4)).toBe(45)
         })
     })
     describe('get()', () => {
         it('get name by enchancement level', ()  => {
-            expect(get(item)).toBe(`[+7] shortsword`)
+            expect(get(item)).toBe(`[+2] shortsword`)
             expect(get(item4)).toBe(`stick`)
         })
     })
